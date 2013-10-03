@@ -5,7 +5,7 @@ class Visitor < ActiveRecord::Base
 	column :email, :string
 
 	validates_presence_of :email
-	validates_presence_of :email, :with => /\A[-a-a0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}\z/i
+	validates_format_of :email, :with => /\A[-a-a0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}\z/i
 
 	def subscribe
 		mailchimp = Gibbon::API.new
